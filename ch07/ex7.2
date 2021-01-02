@@ -7,11 +7,13 @@ def eval_loop():
     while True:
         result = None
         s = input('Enter your input: ')
-        if s == 'done':
+        if not s:
+            print('No input entered.')
+        elif s == 'done':
             return result
         else:
             result = eval(s)
-            print(s)
+            print(result)
 
 last_value = eval_loop()
 print('The last value was:  {}'.format(last_value))
