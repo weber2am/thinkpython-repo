@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+from __future__ import print_function, division
+import math
+
+def mysqrt(a):
+    epsilon = 1e-7
+    x = a  # an initial guess at the square root
+
+    while True:
+        #print(x)
+        y = (x + a/x) / 2
+        if abs(y-x) < epsilon:
+            break
+        x = y
+
+    return y
+
+def test_square_root():
+    for a in range(1, 10):
+        my_sqrt = mysqrt(a)
+        math_sqrt = math.sqrt(a)
+        diff = abs(my_sqrt - math_sqrt)
+        print(a, my_sqrt, math_sqrt, diff)
+
+print()
+print('a   mysqrt(a)     math.sqrt(a)  diff')
+print('-   ---------     ------------  ----')
+test_square_root()
+
