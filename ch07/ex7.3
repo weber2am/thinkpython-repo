@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+from __future__ import print_function, division
+import math
+
+def srinivasan_ramanujan():
+    sum = 0  # add together the results of each summation calcuation
+    coeff = 2 * math.sqrt(2) / 9801
+    k = 0
+    num_iters = 0
+    while True:
+        num_iters += 1
+        a = math.factorial(4 * k)
+        b = 1103 + 26390 * k
+        c = math.factorial(k) ** 4
+        d = 396 ** (4 * k)
+        term = (a * b) / (c * d)
+        sum += term
+        if abs(term) < 1e-15:
+            break
+        k += 1
+    print('num_iters: {}'.format(num_iters))
+    return coeff * sum
+
+
+print('sriniva:  {}'.format(1 / srinivasan_ramanujan()))
+print('math.pi:  {}'.format(math.pi))
